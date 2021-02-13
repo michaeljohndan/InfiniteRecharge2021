@@ -95,34 +95,6 @@ public class DriveTrain extends SubsystemBase {
     m_gyro.calibrate();
   }
 
-  /**
-   * turns the robot in place clockwise (TEST)
-   * @param degrees
-   */
-  public void turnClockwise(double degrees) {
-    double angleBefore = this.getHeading();
-    this.tankDrive(-1 * degrees / 360, degrees / 360);
-    double angleAfter = this.getHeading();
-
-    if (angleBefore - angleAfter != 90) {
-        System.out.print("you messed up");
-    }
-  }
-
-  /**
-   * turns the robot in place counterclockwise (TEST)
-   * @param degrees
-   */
-  public void turnCounterClockwise(double degrees) { 
-    double angleBefore = this.getHeading();
-    this.tankDrive(degrees / 360, -1 * degrees / 360);
-    double angleAfter = this.getHeading();
-
-    if (angleBefore - angleAfter != -90) {
-        System.out.print("you messed up");
-    }
-  }
-
   /** Puts information in the SmartDashboard */
   public void log() {
     SmartDashboard.putNumber("Left Speed", m_left.get());
