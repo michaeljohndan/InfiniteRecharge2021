@@ -37,6 +37,7 @@ public final class Constants {
     // Solenoids
     public static final int INTAKE_SOLENOID_DEPLOY = 0;
     public static final int INTAKE_SOLENOID_RETRACT = 1;
+    public static final int PULLEY_SOLENOID = 8;
 
     // Controllers
     public static final int kController0 = 0;
