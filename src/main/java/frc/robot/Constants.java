@@ -15,13 +15,13 @@ package frc.robot;
 public final class Constants {
 
     // CAN Motors
-    public static final int WHEEL_MOTOR = 0;
+    public static final int PULLEY_MOTOR_VICTORSPX0 = 2;
     public static final int DRIVE_LEFT_VICTORSPX0 = 1;
     public static final int DRIVE_LEFT_VICTORSPX1 = 2;
     public static final int DRIVE_RIGHT_VICTORSPX0 = 4;
     public static final int DRIVE_RIGHT_VICTORSPX1 = 3;
 
-    // PWM Motors
+    // PWM MotorsK
     public static final int INDEX_MOTOR0 = 3;
     public static final int INTAKE_MOTOR = 4;
     public static final int SHOOTER_LEFT0 = 6;
@@ -38,10 +38,13 @@ public final class Constants {
     public static final double ENCODER_TO_INCHES = 2048 / (6 * Math.PI);
 
     // Solenoids
-    public static final int INTAKE_SOLENOID_DEPLOY = 2;
-    public static final int INTAKE_SOLENOID_RETRACT = 3;
-    public static final int SHOOTER_SOLENOID_DEPLOY = 0;
-    public static final int SHOOTER_SOLENOID_RETRACT = 1;
+    public static final int INTAKE_SOLENOID_DEPLOY = 0;
+    public static final int INTAKE_SOLENOID_RETRACT = 1;
+    public static final int SHOOTER_SOLENOID_DEPLOY = 4;
+    public static final int SHOOTER_SOLENOID_RETRACT = 5;
+
+    public static final int PULLEY_SOLENOID_DEPLOY = 2;
+    public static final int PULLEY_SOLENOID_RETRACT = 3;
 
     // Controllers
     public static final int kController0 = 0;

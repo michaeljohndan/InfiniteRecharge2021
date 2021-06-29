@@ -12,6 +12,8 @@ import frc.robot.commands.AutoSequences.*;
 import frc.robot.commands.IndexCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakePistons;
+import frc.robot.commands.PulleyCommand;
+import frc.robot.commands.PulleyPiston;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.ShooterPistons;
 import frc.robot.commands.TankDrive;
@@ -20,6 +22,7 @@ import frc.robot.commands.ShootSpeeds.ShootLow;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.IndexSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.Pulley;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -35,6 +38,7 @@ public class RobotContainer {
   private final IndexSubsystem m_indexer = new IndexSubsystem();
   private final IntakeSubsystem m_intake = new IntakeSubsystem();
   private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+  private final Pulley m_pulley = new Pulley();
 
   private final CrusaderController m_controller0 = new CrusaderController(Constants.kController0);
   private final CrusaderController m_controller1 = new CrusaderController(Constants.kController1);
@@ -77,15 +81,22 @@ public class RobotContainer {
         () -> m_controller1.getRightStickY(), m_intake)
     );
 
-    m_indexer.setDefaultCommand(
-      new IndexCommand(
-        () -> m_controller1.getLeftStickY(), m_indexer)
-    );
+    // m_indexer.setDefaultCommand(
+    //   new IndexCommand(
+    //     () -> m_controller1.getLeftStickY(), m_indexer)
+    // );
 
     m_shooter.setDefaultCommand(
       new ShooterCommand(
         () -> m_controller1.getRightTrigger(), m_shooter)
     );
+
+    m_pulley.setDefaultCommand(
+      new PulleyCommand(
+        () -> m_controller1.getLeftStickY(), m_pulley)
+    );
+
+
 
   }
 
@@ -98,8 +109,12 @@ public class RobotContainer {
   private void configureButtonBindings() {
     m_controller1.xButton.whenHeld(new IntakePistons(m_intake));
     m_controller1.yButton.whenHeld(new ShooterPistons(m_shooter));
+
+    m_controller1.aButton.whenHeld(new PulleyPiston(m_pulley));
     // m_controller1.aButton.whenHeld(new DriveStraight(m_driveTrain));
-    m_controller1.aButton.whileHeld(new ShootHigh(m_shooter));
+    // m_controller1.aButton.whileHeld(new ShootHigh(m_shooter));
+    m_controller1.bButton.whileHeld(new ShootLow(m_shooter));
+
     m_controller1.bButton.whileHeld(new ShootLow(m_shooter));
   }
 
